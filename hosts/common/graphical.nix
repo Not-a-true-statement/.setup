@@ -55,7 +55,12 @@
   };
 
 
-  home = {... }:{
-
+  home = { config, ... }:{
+    home.file."hyprland" = {
+      enable = true;
+      target ="hyprland";
+      source = dotfiles/hyprland/test.txt;
+      recursive = true;
+    };
   };
 }

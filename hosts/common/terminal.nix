@@ -30,6 +30,11 @@
       rebuild-normal =
         "nice -n 19 sudo nixos-rebuild switch --flake ${location}#${configName} --impure";
       rebuild = "${rebuild-normal} |& nom";
+
+      rebuild-test-normal = 
+        "nice -n 19 sudo nixos-rebuild test --flake ${location}#${configName} --impure";
+      rebuild-test = "${rebuild-test-normal} |& nom";
+
       update-normal =
         "nice -n 19 sudo nix flake update --flake ${location} && ${rebuild-normal}";
       update =
@@ -60,6 +65,8 @@
       # Nix management
       rebuild = "${rebuild}";
       rebuild-normal = "${rebuild-normal}";
+      rebuild-test = "${rebuild-test}";
+      rebuild-test-normal = "${rebuild-test-normal}";
       update = "${update}";
       update-normal = "${update-normal}";
 
