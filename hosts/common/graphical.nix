@@ -58,8 +58,8 @@
   home = { config, ... }:{
     home.file."hyprland" = {
       enable = true;
-      target ="hyprland";
-      source = dotfiles/hyprland/test.txt;
+      target =".config/hypr";
+      source = dotfiles/hyprland;
       recursive = true;
     };
   };
