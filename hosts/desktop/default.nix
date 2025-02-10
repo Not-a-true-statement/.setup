@@ -13,7 +13,7 @@ in {
     imports = (map (import: import.system) modules)
       ++ [
         inputs.disko.nixosModules.disko
-         (import ./hardware-configuration.nix) (import ./disko-conf.nix) ];
+         (import ./hardware-configuration.nix) (import ./disko-config.nix) ];
 
   };
 

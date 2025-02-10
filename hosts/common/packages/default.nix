@@ -154,7 +154,7 @@ in {
       minecraft-server
 
       # Creative
-      # davinci-resolve
+      davinci-resolve
       kdePackages.kdenlive # Video editor
       mediainfo # Required by kdenlive
       audacity # Audio editor
