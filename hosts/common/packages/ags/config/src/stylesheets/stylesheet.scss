@@ -1,0 +1,17 @@
+* {
+    all: unset;
+    /* font-family: JetBrainsMono; */
+    /* font-family: Terminess Nerd Font Mono; */
+    font-family: JetBrainsMono Nerd Font;
+    /* font-family: "Perfect DOS VGA 437"; */
+    /* font-weight: bold; */
+    /* font-size: 24px; */
+    /* color: crimson; */
+
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.538);
+}
+
+@import "./../../../../.cache/ags/ags-colors.scss"; // Wallust colors
+@import "./bar.scss";
+@import "./monitorIndicator.scss";
+@import "./common.scss";

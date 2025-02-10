@@ -1,0 +1,28 @@
+// Factor to scale
+$scale-factor: 0.9;
+
+.monitor-indicator-window {
+    background-color: transparent;
+}
+
+.monitor-indicator {
+    background-color: rgba($background, $alpha);
+    background-clip: padding-box;
+    
+    $vside-padding: 0px * $scale-factor;
+    $hsidetop-padding: 20px * $scale-factor;
+    padding: $vside-padding $hsidetop-padding $vside-padding $hsidetop-padding;
+    margin: 64px * $scale-factor;
+    
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(135deg, rgba($border-color1, $alpha) 0%, rgba($border-color2, $alpha) 100%) 1;
+}
+
+.monitor-indicator .monitor-id {
+    font-size: 110px * $scale-factor;
+    padding-right: 20px * $scale-factor;
+}
+.monitor-indicator .monitor-properties {
+    font-size: 16px * $scale-factor;
+}
