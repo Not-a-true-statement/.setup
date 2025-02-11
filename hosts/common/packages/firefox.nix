@@ -12,11 +12,17 @@
       profiles.default = {
         name = "default";
         isDefault = true;
+
+        settings = {
+
+          # Enable userChrome
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
       };
 
     };
 
-    # userChrome
+    # userChrome theme and behaviour modification.
     home.file."firefox-userChrome" = {
       enable = true;
       target =".mozilla/firefox/default/chrome";
