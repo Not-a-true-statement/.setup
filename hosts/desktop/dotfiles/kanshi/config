@@ -1,0 +1,26 @@
+profile default {
+
+    output "Microstep MSI G273Q CA8A641600625" enable mode 2560x1440 position 1080,1080
+    output "Dell Inc. DELL P2219H B6GM443" enable mode 1920x1080 position 0,0 transform 270
+    output "AOC 2460G5 0x00021280" enable mode 1920x1080 position 1080,0 transform 180
+
+    #exec ddcutil --sn=CA8A641600625 setvcp 60 0x12
+    #exec ags quit && ags & disown
+}
+
+profile game {
+
+    output "Microstep MSI G273Q CA8A641600625" disable
+    output "Dell Inc. DELL P2219H B6GM443" enable mode 1920x1080 position 0,0 transform 270
+    output "AOC 2460G5 0x00021280" enable mode 1920x1080 position 1080,0 transform 180
+    
+    #exec ddcutil --sn=CA8A641600625 setvcp 60 0x0f
+    #exec ags quit && ags & disown
+}
+
+profile game {
+    output "Dell Inc. DELL P2219H B6GM443" enable mode 1920x1080 position 0,0 transform 270
+    output "AOC 2460G5 0x00021280" enable mode 1920x1080 position 1080,0 transform 180
+
+    #exec ags quit && ags & disown
+}

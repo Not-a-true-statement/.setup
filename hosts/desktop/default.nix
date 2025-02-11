@@ -2,7 +2,7 @@ let
 
   # Components
   modules = [
-
+    (import ./graphical.nix)
   ];
 
 in {
