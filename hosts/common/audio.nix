@@ -143,32 +143,6 @@
           ${pactl} unload-module module-null-sink
 
         ''}";
-
-        #   ExecStop = let
-        #     pactl = "${pkgs.pulseaudio}/bin/pactl";
-        #   in"${pkgs.writeShellScript "audio-auto-stop" ''
-        #     #!/run/current-system/sw/bin/bash
-
-        #     # Unload module with sink name.
-        #     unloadModule () {
-        #       ${pactl} list short modules | grep "sink_name=$1" | cut -f1 | xargs -L1 pactl unload-module
-        #     } 
-
-        #     # Input Output.
-        #     unloadModule Main_Microphone
-        #     unloadModule Main_Headphone
-
-        #     # AI.
-        #     unloadModule AI
-
-        #     # Applications.
-        #     unloadModule Discord
-        #     unloadModule Browser
-        #     unloadModule Music
-        #     unloadModule VM
-        #     unloadModule VOIP
-
-        #     ''}";
       };
     };
 
