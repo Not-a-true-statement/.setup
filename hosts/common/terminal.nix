@@ -60,7 +60,7 @@
       clear = "clear && ${fill-terminal}";
 
       # Improvements
-      ls = "ls -l --color=auto"; # Output as list by default
+      ls = "ls -lh --color=auto"; # Output as list by default
 
       # Nix management
       rebuild = "${rebuild}";
