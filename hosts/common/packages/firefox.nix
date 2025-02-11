@@ -15,5 +15,15 @@
       };
 
     };
+
+    # userChrome
+    home.file."firefox-userChrome" = {
+      enable = true;
+      target =".mozilla/firefox/default/chrome";
+      source = ../dotfiles/firefox;
+      recursive = true;
+    };
+
+
   };
 }
