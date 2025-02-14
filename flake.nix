@@ -8,7 +8,7 @@
     location = "$HOME/.setup";
 
     # Nix
-    stateVersion = "23.11";
+    stateVersion = "24.11";
   in
   {
     nixosConfigurations = {

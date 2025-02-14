@@ -18,7 +18,9 @@
       jack.enable = true;
       #media-session.enable = true;
     };
+    # services.jack.jackd.enable = true;
 
+    # Realtime kernel
     musnix = {
       enable = true;
       kernel.realtime = true;
@@ -151,6 +153,8 @@
       carla
       yabridge
       yabridgectl
+
+      lsp-plugins
 
       # (pkgs.extend (final: prev: {
       #   carla = prev.carla.overrideAttrs (old: {

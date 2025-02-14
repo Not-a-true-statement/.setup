@@ -168,6 +168,8 @@ in {
       obsidian
       yt-dlp
 
+      fatrace
+
       # Windows application support
       wineWowPackages.waylandFull
       # wineWowPackages.stable
@@ -183,7 +185,7 @@ in {
       brightnessctl
       dunst
       (pkgs.extend (final: prev: {
-        ags = prev.ags.overrideAttrs (old: {
+        ags_1 = prev.ags_1.overrideAttrs (old: {
           buildInputs = old.buildInputs ++ [
             prev.libdbusmenu-gtk3
 
@@ -194,7 +196,7 @@ in {
             upower
           ];
         });
-      })).ags
+      })).ags_1
       # ags
       # inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default
       wallust
@@ -214,6 +216,18 @@ in {
       qjackctl
       jacktrip
       pulseaudio
+      
+
+
+      (pkgs.extend (final: prev: {
+        raysession = prev.raysession.overrideAttrs (old: rec {
+          version = "0.14.4";
+          src = fetchurl {
+            url = "https://github.com/Houston4444/RaySession/releases/download/v${version}/RaySession-${version}-source.tar.gz";
+            sha256 = "sha256-cr9kqZdqY6Wq+RkzwYxNrb/PLFREKUgWeVNILVUkc7A=";
+          };
+        });
+      })).raysession
 
       # Temp
       networkmanagerapplet
@@ -252,7 +266,7 @@ in {
       # })).iosevka
 
       (pkgs.discord.override { withVencord = true; })
-      # vesktop
+      vesktop
       # vencord
       # discord
       # betterdiscordctl
