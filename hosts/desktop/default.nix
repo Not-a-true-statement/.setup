@@ -7,20 +7,20 @@ let
 
 in {
 
-  system = { inputs, ... }: {
+  system = { importSystem, inputs, ... }: {
 
     # Apply components
-    imports = (map (import: import.system) modules)
+    imports = importSystem modules
       ++ [
         inputs.disko.nixosModules.disko
          (import ./hardware-configuration.nix) (import ./disko-config.nix) ];
 
   };
 
-  home = { ... }: {
+  home = { importHome, ... }: {
 
     # Apply components
-    imports = map (import: import.home) modules;
+    imports = importHome modules;
 
   };
 }

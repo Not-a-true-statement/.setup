@@ -1,4 +1,4 @@
-let 
+let
 
   # Components
   modules = [
@@ -17,13 +17,13 @@ let
 in {
 
   # System
-  system = { stateVersion, pkgs, ... }:{
+  system = { importSystem, stateVersion, pkgs, ... }: {
     # Services
     services.printing.enable = true;
     services.avahi.enable = true;
 
     # Nix
-    system = { inherit stateVersion; }; 
+    system = { inherit stateVersion; };
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     nix.optimise.automatic = true;
     nix.settings.auto-optimise-store = true;
@@ -35,10 +35,8 @@ in {
     boot.loader.efi.canTouchEfiVariables = true;
 
     # Firmware update
-    services.fwupd = {
-      enable = true;
-    };
-    
+    services.fwupd = { enable = true; };
+
     # File manager
     programs.thunar = {
       enable = true;
@@ -46,17 +44,17 @@ in {
     };
 
     # Apply components
-    imports = map (import: import.system) modules;
+    imports = importSystem modules;
 
   };
-  
+
   # Home manager
-  home = {
+  home = { importHome, ... }: {
     # Enable Home Manager
     programs.home-manager.enable = true;
 
     # Apply components
-    imports = (map (import: import.home) modules);
+    imports = importHome modules;
   };
 
 }

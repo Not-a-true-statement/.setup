@@ -7,18 +7,18 @@ let
 
 in
 {
-  system = { ... }:{
+  system = { importSystem, ... }:{
 
     # Apply components
-    imports = (map (import: import.system) modules) ++ [ (import ./hardware-configuration.nix) ];
+    imports = importSystem modules ++ [ (import ./hardware-configuration.nix) ];
   
   };
   
   
-  home = { ... }:{
+  home = { importHome, ... }:{
 
     # Apply components
-    imports = map (import: import.home) modules;
+    imports = importHome modules;
   
   };
 }

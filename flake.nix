@@ -1,6 +1,6 @@
 {
   description = "A very basic flake";
-
+  
   outputs = inputs @ { self, nixpkgs, home-manager, flake-utils, ...}:
   let
     # User
@@ -9,6 +9,10 @@
 
     # Nix
     stateVersion = "24.11";
+
+    # Importing for system and home manager
+    importSystem = modules: map (import: import.system) modules;
+    importHome = modules: map (import: import.home) modules;
   in
   {
     nixosConfigurations = {
@@ -16,7 +20,7 @@
       desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs stateVersion user location nixpkgs flake-utils;
+          inherit importSystem inputs stateVersion user location nixpkgs flake-utils;
         };
         modules = [
           (import ./hosts/common).system
@@ -27,7 +31,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs stateVersion user location;
+              inherit importHome inputs stateVersion user location;
               configName = "desktop";
             };
             home-manager.users.${user} = {
@@ -43,7 +47,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs stateVersion user location nixpkgs flake-utils;
+          inherit importSystem inputs stateVersion user location nixpkgs flake-utils;
         };
         modules = [
           (import ./hosts/common).system
@@ -54,7 +58,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs stateVersion user location;
+              inherit importHome inputs stateVersion user location;
               configName = "laptop";
             };
             home-manager.users.${user} = {

@@ -9,17 +9,17 @@ in
 {
 
   # System
-  system = { pkgs, user, ... }:{
+  system = { pkgs, user, importSystem, ... }:{
 
     # Apply devies
-    imports = (map (import: import.system) importDevices);
+    imports = importSystem importDevices;
   };
 
   # Home manager
-  home = { pkgs, inputs, ... } : {
+  home = { importHome, pkgs, inputs, ... } : {
 
     # Apply devices
-    imports = (map (import: import.home) importDevices);
+    imports = importHome importDevices;
   };
 
 }

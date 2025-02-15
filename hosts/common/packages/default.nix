@@ -19,14 +19,14 @@ let
 in {
 
   # System
-  system = { pkgs, user, ... }: {
+  system = { importSystem, pkgs, user, ... }: {
 
     # TEMP
     services.gvfs.enable = true;
     services.nfs.server.enable = true;
 
     # Apply programs
-    imports = (map (import: import.system) importPrograms);
+    imports = importSystem importPrograms;
 
     # System packages
     users.users."${user}".packages = with pkgs; [
@@ -77,10 +77,10 @@ in {
   };
 
   # Home manager
-  home = { pkgs, inputs, ... }: {
+  home = { importHome, pkgs, inputs, ... }: {
 
     # Apply programs
-    imports = (map (import: import.home) importPrograms);
+    imports = importHome importPrograms;
 
     # User packages
     home.packages = with pkgs; [
