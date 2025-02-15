@@ -149,6 +149,17 @@ in {
       hyprpaper
       mpvpaper
       wallutils
+      (pkgs.extend (final: prev: {
+        gowall = prev.gowall.overrideAttrs (old: rec {
+          version = "0.2.0";
+          src = fetchFromGitHub {
+            owner = "Achno";
+            repo = "gowall";
+            rev = "v0.2.0";
+            hash = "sha256-QKukWA8TB0FoNHu0Wyco55x4oBY+E33qdoT/SaXW6DE=";
+          };
+        });
+      })).gowall
 
       prismlauncher
       minecraft-server
@@ -216,14 +227,13 @@ in {
       qjackctl
       jacktrip
       pulseaudio
-      
-
 
       (pkgs.extend (final: prev: {
         raysession = prev.raysession.overrideAttrs (old: rec {
           version = "0.14.4";
           src = fetchurl {
-            url = "https://github.com/Houston4444/RaySession/releases/download/v${version}/RaySession-${version}-source.tar.gz";
+            url =
+              "https://github.com/Houston4444/RaySession/releases/download/v${version}/RaySession-${version}-source.tar.gz";
             sha256 = "sha256-cr9kqZdqY6Wq+RkzwYxNrb/PLFREKUgWeVNILVUkc7A=";
           };
         });
