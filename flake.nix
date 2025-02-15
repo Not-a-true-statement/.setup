@@ -79,11 +79,13 @@
   inputs = {
 
     # Nix packages
+    # A collection of over 100,000 software packages that can be installed with the Nix.
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
 
     # Nix flake utilities
+    # Collection of pure Nix functions that don't depend on nixpkgs, and that are useful in the context of writing other Nix flakes.
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -107,7 +109,7 @@
     lan-mouse.url = "github:feschber/lan-mouse";
     
     # https://github.com/musnix/musnix/
-    # A collection of optimization options for realtime audio
+    # A collection of optimization options for realtime audio including kernel
     musnix.url = "github:musnix/musnix";
 
 
