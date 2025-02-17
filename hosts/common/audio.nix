@@ -197,42 +197,52 @@
         ];
       };
 
-      # "20-external-network-audio" = {
-      #   "context.modules" = [
-      #     # Netjack2
-      #     {
-      #       "name" = "libpipewire-module-netjack2-manager";
-      #       "flags" = [ "ifexists" "nofail" ];
-      #       "args" = {
-      #         # node.name
-      #         "node.description" = "Netjack2";
+      "network-audio" = {
+        "context.modules" = [
+          # Netjack2
+          {
+            "name" = "libpipewire-module-netjack2-manager";
+            "flags" = [ "ifexists" "nofail" ];
+            "args" = {
+              # node.name
+              "net.ip" = "10.0.0.20";
+              "netjack2.sample-rate" = 48000;
+              "netjack2.period-size" = 512;
 
-      #         "net.ip" = "10.0.0.20";
-      #         "netjack2.sample-rate" = 48000;
-      #         "netjack2.period-size" = 512;
-      #         "midi.ports" = 0;
-      #         "audio.channels" = 2;
-      #         "audio.position" = [ "FL,FR" ];
+              # # extra sink properties
+              "source.props" = {
+                "node.description" = "Netjack2";
+                "netjack2.connect" = true;
+                "midi.ports" = 0;
+                "audio.channels" = 2;
+                "audio.position" = [ "FL" "FR" ];
+                # "node.name" = "windows-source";
+                # "node.passive" = true;
+                # "target.object" = "headphone-capture";
+              };
+              # # extra sink properties
+              "sink.props" = {
+                "node.description" = "Netjack2";
+                "netjack2.connect" = true;
+                
+                "node.dont-reconnect" = false;
+                "node.autoconnect" = true;
 
-      #         "netjack2.connect" = true;
-      #         # "target.object" = "headphone-capture";
 
-      #         # # extra sink properties
-      #         "source.props" = {
-      #           # "node.name" = "windows-source";
-      #           # "node.passive" = true;
-      #           "target.object" = "headphone-capture";
-      #         };
-      #         # # extra sink properties
-      #         "sink.props" = {
-      #           "target.object" = "headphone-capture";
-      #           # "node.name" = "windows-sink";
-      #           # "node.passive" = true;
-      #         };
-      #       };
-      #     }
-      #   ];
-      # };
+                "midi.ports" = 0;
+                "audio.channels" = 2;
+                "audio.position" = [ "FL" "FR" ];
+                "stream.dont-remix" = true;
+                "node.passive" = true;
+                # "target.object" = "headphone-capture";
+                "target.object" = "discord-playback";
+                # "node.name" = "windows-sink";
+                # "node.passive" = true;
+              };
+            };
+          }
+        ];
+      };
 
     };
   };
