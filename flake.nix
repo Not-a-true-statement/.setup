@@ -113,6 +113,13 @@
     musnix.url = "github:musnix/musnix";
 
 
+    # https://github.com/0xc000022070/zen-browser-flake
+    # This is a flake for the Zen browser.
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+    };
+
+
     # DE
     # ags.url = "github:Aylur/ags";
 

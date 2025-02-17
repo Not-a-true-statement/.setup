@@ -84,6 +84,9 @@ in {
 
     # User packages
     home.packages = with pkgs; [
+
+      inputs.zen-browser.packages."${system}".twilight
+
       spotify
       kate
       thunderbird
@@ -277,7 +280,7 @@ in {
 
       (pkgs.discord.override { withVencord = true; })
       vesktop
-      # vencord
+      vencord
       # discord
       # betterdiscordctl
     ];
