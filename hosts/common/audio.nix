@@ -209,7 +209,7 @@
               "netjack2.sample-rate" = 48000;
               "netjack2.period-size" = 512;
 
-              # # extra sink properties
+              # # extra source properties
               "source.props" = {
                 "node.description" = "Netjack2";
                 "netjack2.connect" = true;
@@ -235,7 +235,7 @@
                 "stream.dont-remix" = true;
                 "node.passive" = true;
                 # "target.object" = "headphone-capture";
-                "target.object" = "discord-playback";
+                "target.object" = "games-capture";
                 # "node.name" = "windows-sink";
                 # "node.passive" = true;
               };
