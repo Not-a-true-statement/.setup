@@ -10,10 +10,6 @@
       font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
     };
 
-    services.localtimed.enable = true;
-    services.geoclue2.enable = true;
-    time.timeZone = lib.mkDefault "Europe/Stocholm";
-
     users.users."${user}" = {
       # shell = pkgs.zsh;
       isNormalUser = true;
@@ -21,6 +17,33 @@
       extraGroups =
         [ "networkmanager" "input" "audio" "realtime" "video" "wheel" ];
     };
+
+    # Localization
+    services.localtimed.enable = true;
+    services.geoclue2.enable = true;
+    time.timeZone = lib.mkDefault "Europe/Stockholm";
+
+    i18n = {
+      defaultLocale = "en_US.UTF-8";
+      extraLocaleSettings = {
+        LC_ADDRESS = "sv_SE.UTF-8";
+        LC_IDENTIFICATION = "sv_SE.UTF-8";
+        LC_MEASUREMENT = "sv_SE.UTF-8";
+        LC_MONETARY = "sv_SE.UTF-8";
+        LC_NAME = "sv_SE.UTF-8";
+        LC_NUMERIC = "sv_SE.UTF-8";
+        LC_PAPER = "sv_SE.UTF-8";
+        LC_TELEPHONE = "sv_SE.UTF-8";
+        LC_TIME = "sv_SE.UTF-8";
+      };
+    };
+    
+    # Keyboard
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
   };
 
   home = { stateVersion, user, config, ... }: {

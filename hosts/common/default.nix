@@ -37,12 +37,6 @@ in {
     # Firmware update
     services.fwupd = { enable = true; };
 
-    # File manager
-    programs.thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-    };
-
     # Apply components
     imports = importSystem modules;
 
