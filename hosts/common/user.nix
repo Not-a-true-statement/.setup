@@ -11,6 +11,7 @@
     };
 
     users.users."${user}" = {
+      initialHashedPassword = "$6$UoDBk9tlILKoKadm$nQG2VLmxO9.lt0uzKPyLoOxebxZz52By8eh0a3QOCL6XKhKMfEqP.9adbEvZQ60PsjF5CxoUMd.eh/DG0.1fJ/";
       # shell = pkgs.zsh;
       isNormalUser = true;
       description = "${user}";
